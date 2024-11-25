@@ -5,4 +5,5 @@
 -- insert into myentity (id, field) values(3, 'field-3');
 -- alter sequence myentity_seq restart with 4;
 
-insert into users (name) values('teste');
+INSERT INTO users (name) VALUES ('teste');
+INSERT INTO transactions (user_id, value, date) VALUES (1, 200, '2024-10-24');
