@@ -1,13 +1,18 @@
 package com.adelsonsljunior.controllers;
 
 import com.adelsonsljunior.dtos.transaction.TransactionResponseDTO;
+
+import java.util.List;
+
 import com.adelsonsljunior.dtos.transaction.TransactionRequestDTO;
 import com.adelsonsljunior.services.TransactionService;
 
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -28,6 +33,13 @@ public class TransactionController {
 
         return Response.status(Response.Status.CREATED).entity(createdTransaction).build();
 
+    }
+
+    @GET()
+    @Path("/{userId}")
+    public Response findAllByUserId(@PathParam("userId") Long userId) {
+        List<TransactionResponseDTO> transactions = transactionService.findAllByUserId(userId);
+        return Response.status(Response.Status.OK).entity(transactions).build();
     }
 
 }
