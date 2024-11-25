@@ -73,8 +73,7 @@ public class Transaction {
                 this.id,
                 this.user.getId(),
                 this.value,
-                this.date
-        );
+                this.date);
     }
 
 }

@@ -26,7 +26,7 @@ public class User {
         this.name = name;
     }
 
-    public User(UserRequestDTO data){
+    public User(UserRequestDTO data) {
         this.name = data.name();
     }
 
