@@ -2,10 +2,13 @@ package com.adelsonsljunior.services;
 
 import com.adelsonsljunior.dtos.transaction.TransactionResponseDTO;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.adelsonsljunior.dtos.transaction.TransactionRequestDTO;
+import com.adelsonsljunior.dtos.transaction.BalanceResponseDTO;
+import com.adelsonsljunior.dtos.transaction.DepositRequestDTO;
 import com.adelsonsljunior.entities.Transaction;
 import com.adelsonsljunior.entities.User;
 import com.adelsonsljunior.exceptions.ResourceNotFoundException;
@@ -25,7 +28,7 @@ public class TransactionService {
     UserRepository userRepository;
 
     @Transactional
-    public TransactionResponseDTO deposit(TransactionRequestDTO data) {
+    public TransactionResponseDTO deposit(DepositRequestDTO data) {
 
         User user = userRepository.findByIdOptional(data.userId())
                 .orElseThrow(() -> new ResourceNotFoundException(
@@ -48,5 +51,31 @@ public class TransactionService {
                 .map(Transaction::tResponse)
                 .collect(Collectors.toList());
 
+    }
+
+    public BalanceResponseDTO getBalance(Long transactionId, LocalDate currenDate) {
+
+        Transaction transaction = transactionRepository.findByIdOptional(transactionId)
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Transaction with ID " + transactionId + " not found"));
+
+        double currentValue = calculeteBalance(transaction, currenDate);
+
+        return new BalanceResponseDTO(
+                transaction.getId(),
+                transaction.getUser().getId(),
+                transaction.getValue(),
+                currentValue,
+                transaction.getDate());
+
+    }
+
+    private double calculeteBalance(Transaction transaction, LocalDate currenDate) {
+
+        long days = ChronoUnit.DAYS.between(transaction.getDate(), currenDate);
+
+        double currentValue = transaction.getValue() * days * (33.33 / 100);
+
+        return currentValue;
     }
 }

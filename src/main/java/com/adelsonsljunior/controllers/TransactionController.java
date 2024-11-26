@@ -2,9 +2,11 @@ package com.adelsonsljunior.controllers;
 
 import com.adelsonsljunior.dtos.transaction.TransactionResponseDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
-import com.adelsonsljunior.dtos.transaction.TransactionRequestDTO;
+import com.adelsonsljunior.dtos.transaction.BalanceResponseDTO;
+import com.adelsonsljunior.dtos.transaction.DepositRequestDTO;
 import com.adelsonsljunior.services.TransactionService;
 
 import jakarta.inject.Inject;
@@ -27,7 +29,7 @@ public class TransactionController {
 
     @POST()
     @Path("/deposit")
-    public Response deposit(TransactionRequestDTO data) {
+    public Response deposit(DepositRequestDTO data) {
 
         TransactionResponseDTO createdTransaction = transactionService.deposit(data);
 
@@ -40,6 +42,17 @@ public class TransactionController {
     public Response findAllByUserId(@PathParam("userId") Long userId) {
         List<TransactionResponseDTO> transactions = transactionService.findAllByUserId(userId);
         return Response.status(Response.Status.OK).entity(transactions).build();
+    }
+
+    @GET()
+    @Path("/balance/{transactionId}/{currentDate}")
+    public Response getBalance(@PathParam("transactionId") Long transactionId,
+            @PathParam("currentDate") LocalDate currentDate) {
+
+        BalanceResponseDTO balance = transactionService.getBalance(transactionId, currentDate);
+
+        return Response.status(Response.Status.OK).entity(balance).build();
+
     }
 
 }

@@ -2,7 +2,6 @@ package com.adelsonsljunior.repositories;
 
 import java.util.List;
 
-import com.adelsonsljunior.dtos.transaction.TransactionResponseDTO;
 import com.adelsonsljunior.entities.Transaction;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
