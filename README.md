@@ -6,7 +6,7 @@ If you want to learn more about Quarkus, please visit its website: <https://quar
 
 <br>
 
-> ## How to run
+## How to run
 
 ### Create a copy of the `.env.example` file named `.env`
 
