@@ -2,7 +2,7 @@ name: urubu-do-pix-backend
 
 services:
   api:
-    image: quarkus/urubu-do-pix-backend-jvm
+    image: junioradelsonst/urubu-do-pix-backend
     ports:
       - 8080:8080
     environment:
