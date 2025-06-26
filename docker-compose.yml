@@ -2,7 +2,7 @@ name: urubu-do-pix-backend
 
 services:
   api:
-    image: junioradelsonst/urubu-do-pix-backend
+    image: junioradelsonst/urubu-do-pix-backend:latest
     ports:
       - 8080:8080
     environment:

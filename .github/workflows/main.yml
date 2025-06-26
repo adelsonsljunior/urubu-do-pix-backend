@@ -65,5 +65,8 @@ jobs:
       
       - name: Build and Push Docker Image
         run: |
-          docker build -f src/main/docker/Dockerfile.jvm -t ${{ secrets.DOCKERHUB_USERNAME }}/urubu-do-pix-backend:${{ env.commit_hash }} .
+          docker build -f src/main/docker/Dockerfile.jvm \
+            -t ${{ secrets.DOCKERHUB_USERNAME }}/urubu-do-pix-backend:${{ env.commit_hash }} \
+            -t ${{ secrets.DOCKERHUB_USERNAME }}/urubu-do-pix-backend:latest .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/urubu-do-pix-backend:${{ env.commit_hash }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/urubu-do-pix-backend:latest
