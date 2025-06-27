@@ -1,7 +1,5 @@
 # urubu-do-pix-backend
 
-<br>
-
 ## How to run
 
 ### Create a copy of the `.env.example` file named `.env`
@@ -16,7 +14,7 @@ docker compose up
 
 > ## Accessing documentation with swagger
 
-### `localhost:8080/q/docs`
+### `http://localhost:8080/api/q/docs/`
 
 <br>
 
