@@ -10,8 +10,6 @@
 docker compose up
 ~~~
 
-<br>
-
 > ## Accessing documentation with swagger
 
 ### `http://localhost:8080/api/q/docs/`
