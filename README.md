@@ -12,7 +12,7 @@ docker compose up
 
 ## Accessing documentation with swagger
 
-[http://localhost:8080/api/q/docs/](http://localhost:8080/api/q/docs/)
+<a href="http://localhost:8080/api/q/docs/" target="_blank">http://localhost:8080/api/q/docs/</a>
 
 <br>
 
