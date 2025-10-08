@@ -10,9 +10,9 @@
 docker compose up
 ~~~
 
-> ## Accessing documentation with swagger
+## Accessing documentation with swagger
 
-### `http://localhost:8080/api/q/docs/`
+[http://localhost:8080/api/q/docs/](http://localhost:8080/api/q/docs/)
 
 <br>
 
